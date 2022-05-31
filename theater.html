@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Party</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <!--   <script>
+    AFRAME.registerComponent('play-pause',{
+            init:function(){
+                var myVideo =document.querySelector('#testVideo');
+                var videoControls = document.querySelector('#videoControls');
+                this.el.addEventListner('click', function(){
+                    if(myVideo.paused){
+                        myVideo.play();
+                        videoControls.setAttribute('src', '#pause');
+                    }
+                    else{
+                        myVideo.pause();
+                        videoControls.setAttribute('src', '#play');
+                    }
+                });
+            }
+        });
+</script> -->
+  </head>
+
+  <body>
+    <a-scene cursor="rayorigin:mouse">
+	    <a-assets>
+	      <a-assets-item id="theaterChair" src="assets/theater_chair/scene.gltf"></a-assets-item>
+	      <img id="play" src="assets/play.png">
+	      <img id="pause" src="assets/pause.png">
+        <video id="Movie" loop="true" src="assets/birthdayVideo.mp4" autoplay></video>
+        <img id="floorTexture" src="assets/floorTexture.jpg">
+        <img id="theaterWallTexture" src="assets/theaterWallTexture.jpg">
+        <img id="starryNight" src="assets/starryNight.png">
+      </a-assets>
+
+ <!--      <a-entity environment="preset: starry; dressingAmount: 1000"></a-entity> -->
+ `````<a-entity position="3 0 5" movement-controls="speed: 0.05; constrainToNavMesh: true">
+          <a-camera id="cam" user-height="1.6" look-controls="pointerLockEnabled: true" wasd-controls="acceleration: 20;
+					 easing: 1000"></a-camera>
+      </a-entity>
+      <rw-room position="-4 0 -4">
+      	<a-plane material="color:white" roation="90 90 0" position="4 1.25 0.005" height="2" width="7"></a-plane>
+      	<a-video src="#Movie" width="7" height="2" position="4 1.25 0.005">
+      		<!--play/Pause-->
+      		<!-- <a-image id="videoControls" src="#play" position="0.07 0.04 0.07" scale="0.5 0.5 1" play-pause></a-image>-->
+      	</a-video>
+
+      	<a-entity gltf-model="#theaterChair" position="2 0 2" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="2 0 4" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="2 0 6" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="4 0 2" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="4 0 4" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="4 0 6" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="6 0 2" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="6 0 4" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-entity gltf-model="#theaterChair" position="6 0 6" scale="0.75 0.75 0.75" rotation="0 180 0"></a-entity>
+      	<a-plane position="4 0 4" width="8" height="8" material="src:#floorTexture; repeat:2 2" rotation="-90 0 0"></a-plane>
+				<rw-wall position="8 0 0" outside="true" material="side:double;src:#theaterWallTexture;repeat:2 1"></rw-wall>
+				<rw-wall position="8 0 8" outside="true" material="side:double;src:#theaterWallTexture;repeat:2 1"></rw-wall>
+				<rw-wall position="0 0 8" outside="true" material="side:double;src:#theaterWallTexture;repeat:2 1"></rw-wall>
+				<rw-wall position="0 0 0" outside="true" material="side:double;src:#theaterWallTexture;repeat:2 1">
+				</rw-wall>
+				<a-plane position="4 2.405 4" width="8" height="8" rotation="-90 0 0" material="side:double;src:#starryNight; repeat:4 4"></a-plane>
+			</rw-room>
+			<a-light type="ambient" color="BBB"></a-light>
+      <a-light type="point" color="#00FF00" position="0 4.5 4" castshadow="true" light="color: #f9e353; intensity: 10; distance: 15" animation="property: light.intensity; from:0; to: 3; repeat: indefinite; dur: 3000; easing: linear;loop: true; dir:alternate"></a-ligh>
+		</a-scene>
+  </body>
+</html>
